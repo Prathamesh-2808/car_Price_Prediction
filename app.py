@@ -53,6 +53,7 @@ LOCATION_OPTIONS = ['Mumbai', 'Delhi', 'Bangalore', 'Chennai', 'Hyderabad', 'Kol
 OWNER_OPTIONS = [1, 2, 3] 
 
 # --- New Mapping for Car Model to Body Type ---
+# This is the central source of truth for the automatic selection.
 CAR_TYPE_MAPPING = {
     'Maruti S PRESSO': 'Hatchback', 'Hyundai Xcent': 'Sedan',
     'Tata Safari': 'SUV', 'Maruti Vitara Brezza': 'SUV',
@@ -132,16 +133,16 @@ TYPE_MAP = create_mapping(TYPE_OPTIONS)
 LOCATION_MAP = create_mapping(LOCATION_OPTIONS)
 
 
-# --- CALLBACK FUNCTION to automatically update Car Body Type ---
+# --- CALLBACK FUNCTION to automatically update Car Body Type (Triggered by Car Model change) ---
 def update_car_type_on_model_change():
     """Reads the selected car name and updates the car_type state variable."""
-    # The new car name is stored in st.session_state.car_name after the selectbox is used
-    car_name = st.session_state.car_name
+    # The new car name is stored in st.session_state.input_car_name (the key of the selectbox)
+    car_name = st.session_state.input_car_name
     
-    # Look up the corresponding body type, defaulting to the first option if not found
+    # Look up the corresponding body type, defaulting to the first option ('Hatchback') if not found
     default_type = CAR_TYPE_MAPPING.get(car_name, TYPE_OPTIONS[0])
     
-    # Update the session state variable for car_type, which is used to set the index in tab 2
+    # Update the session state variable for car_type
     st.session_state.car_type = default_type
 
 
@@ -203,15 +204,15 @@ def load_model(url):
 model = load_model(DOWNLOAD_URL)
 
 
-# --- 2. STREAMLIT UI DESIGN (ADOPTED FROM APP1.PY) ---
+# --- 2. STREAMLIT UI DESIGN ---
 
-# Custom CSS for high contrast and modern look (ADOPTED FROM APP1.PY)
+# Custom CSS for high contrast and modern look
 st.markdown("""
 <style>
 .main-header { 
     font-size: 3.5em; 
     font-weight: 800; 
-    color: #007BFF; /* Blue accent for modern look */ 
+    color: #007BFF; 
     text-align: center; 
     padding: 10px 0; 
     margin-bottom: 10px;
@@ -236,14 +237,14 @@ st.markdown("""
 }
 /* Metric styles for high contrast */
 div[data-testid="stMetric"] {
-    background-color: #e6f2ff; /* Light blue background */
+    background-color: #e6f2ff; 
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 div[data-testid="stMetricValue"] {
     font-size: 2.5em; 
-    color: #004085; /* Dark blue for metric value */
+    color: #004085; 
     font-weight: 700;
 }
 div[data-testid="stMetricLabel"] {
@@ -268,7 +269,8 @@ st.markdown("---")
 # Initialize session state for all inputs and prediction result
 input_defaults = {
     'car_name': CAR_NAMES[0], 'year': 2018, 'owner': 1, 'distance': 50000, 
-    'fuel': FUEL_OPTIONS[0], 'car_type': TYPE_OPTIONS[0], 'drive': DRIVE_OPTIONS[0], 
+    'fuel': FUEL_OPTIONS[0], 'car_type': CAR_TYPE_MAPPING[CAR_NAMES[0]], # Set initial car_type based on initial car_name
+    'drive': DRIVE_OPTIONS[0], 
     'location': LOCATION_OPTIONS[0], 'last_prediction': None
 }
 for key, default in input_defaults.items():
@@ -286,7 +288,7 @@ with tab1:
         key='input_car_name', 
         index=CAR_NAMES.index(st.session_state.car_name), 
         help="Choose the exact model name.",
-        on_change=update_car_type_on_model_change
+        on_change=update_car_type_on_model_change # THIS LINE TRIGGERS THE AUTOMATIC UPDATE
     )
     col_t1_1, col_t1_2 = st.columns(2)
     with col_t1_1:
@@ -312,8 +314,8 @@ with tab2:
             st.info("ℹ️ Very low mileage for the car's age. (Positive factor)")
 
     with col_t2_2:
-        # The index for 'Car Body Type' is automatically updated here because st.session_state.car_type 
-        # was modified by the update_car_type_on_model_change callback in tab 1.
+        # The index is dynamically set by reading st.session_state.car_type, which is updated
+        # by the callback in the previous tab.
         st.session_state.car_type = st.selectbox(
             'Car Body Type', 
             options=TYPE_OPTIONS, 
