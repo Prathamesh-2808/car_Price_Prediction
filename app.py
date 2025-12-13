@@ -52,6 +52,74 @@ TYPE_OPTIONS = ['Hatchback', 'Sedan', 'SUV', 'Lux_SUV', 'Lux_Sedan']
 LOCATION_OPTIONS = ['Mumbai', 'Delhi', 'Bangalore', 'Chennai', 'Hyderabad', 'Kolkata']
 OWNER_OPTIONS = [1, 2, 3] 
 
+# --- New Mapping for Car Model to Body Type ---
+CAR_TYPE_MAPPING = {
+    'Maruti S PRESSO': 'Hatchback', 'Hyundai Xcent': 'Sedan',
+    'Tata Safari': 'SUV', 'Maruti Vitara Brezza': 'SUV',
+    'Tata Tiago': 'Hatchback', 'Maruti Swift': 'Hatchback',
+    'Hyundai i20': 'Hatchback', 'Renault Kwid': 'Hatchback',
+    'Hyundai Grand i10': 'Hatchback', 'Maruti IGNIS': 'Hatchback',
+    'Honda Brio': 'Hatchback', 'Hyundai Elite i20': 'Hatchback',
+    'Honda City': 'Sedan', 'Maruti Baleno': 'Hatchback',
+    'Honda WR-V': 'SUV', 'Honda Amaze': 'Sedan',
+    'Maruti Alto 800': 'Hatchback', 'Maruti Celerio': 'Hatchback',
+    'Ford Ecosport': 'SUV', 'Maruti Ciaz': 'Sedan',
+    'Datsun Redi Go': 'Hatchback', 'Tata TIAGO NRG': 'Hatchback',
+    'Hyundai Santro Xing': 'Hatchback', 'Ford FREESTYLE': 'Hatchback',
+    'Maruti Dzire': 'Sedan', 'Maruti Alto': 'Hatchback',
+    'Hyundai NEW SANTRO': 'Hatchback', 'Maruti Alto K10': 'Hatchback',
+    'Ford Endeavour': 'Lux_SUV', 'Maruti Swift Dzire': 'Sedan',
+    'Maruti Wagon R 1.0': 'Hatchback', 'Hyundai GRAND I10 NIOS': 'Hatchback',
+    'Maruti Celerio X': 'Hatchback', 'Toyota URBAN CRUISER': 'SUV',
+    'Mahindra XUV500': 'SUV', 'Hyundai Verna': 'Sedan',
+    'Hyundai VENUE': 'SUV', 'Tata NEXON': 'SUV',
+    'Mahindra KUV 100 NXT': 'Hatchback', 'Toyota YARIS': 'Sedan',
+    'Mahindra XUV 3OO': 'SUV', 'Renault TRIBER': 'SUV',
+    'Hyundai Tucson New': 'SUV', 'Mahindra TUV300': 'SUV',
+    'Toyota Glanza': 'Hatchback', 'Maruti Eeco': 'Hatchback',
+    'Renault Duster': 'SUV', 'Hyundai i10': 'Hatchback',
+    'Nissan MAGNITE': 'SUV', 'KIA SONET': 'SUV',
+    'Maruti Ertiga': 'SUV', 'Honda Jazz': 'Hatchback',
+    'KIA SELTOS': 'SUV', 'Volkswagen Ameo': 'Sedan',
+    'Renault Kiger': 'SUV', 'Honda Accord': 'Lux_Sedan',
+    'Hyundai NEW I20': 'Hatchback', 'Tata ALTROZ': 'Hatchback',
+    'Maruti A Star': 'Hatchback', 'Maruti Ritz': 'Hatchback',
+    'Nissan Micra': 'Hatchback', 'Hyundai Eon': 'Hatchback',
+    'Hyundai Creta': 'SUV', 'Mahindra Bolero': 'SUV',
+    'Toyota Etios Liva': 'Hatchback', 'Maruti New Wagon-R': 'Hatchback',
+    'Nissan Micra Active': 'Hatchback', 'Tata Harrier': 'SUV',
+    'Tata TIGOR': 'Sedan', 'Tata PUNCH': 'SUV',
+    'Volkswagen Polo': 'Hatchback', 'Toyota Camry': 'Lux_Sedan',
+    'Toyota Corolla Altis': 'Sedan', 'Honda Civic': 'Sedan',
+    'Volkswagen Vento': 'Sedan', 'Maruti S Cross': 'SUV',
+    'Skoda Octavia': 'Sedan', 'Hyundai i20 Active': 'Hatchback',
+    'Hyundai New Elantra': 'Sedan', 'Honda BR-V': 'SUV',
+    'Hyundai AURA': 'Sedan', 'Mahindra Thar': 'SUV',
+    'Maruti Zen Estilo': 'Hatchback', 'Hyundai NEW I20 N LINE': 'Hatchback',
+    'Tata Hexa': 'SUV', 'Maruti XL6': 'SUV',
+    'Honda CRV': 'Lux_SUV', 'Toyota Innova': 'SUV',
+    'Skoda Rapid': 'Sedan', 'Datsun Go': 'Hatchback',
+    'Maruti Wagon R Stingray': 'Hatchback', 'Volkswagen TIGUAN': 'Lux_SUV',
+    'Toyota Etios': 'Sedan', 'Tata Zest': 'Sedan',
+    'Ford New Figo': 'Hatchback', 'Mahindra Kuv100': 'Hatchback',
+    'Skoda SLAVIA': 'Sedan', 'Mahindra Scorpio': 'SUV',
+    'Nissan Terrano': 'SUV', 'Volkswagen TAIGUN': 'SUV',
+    'Renault Captur': 'SUV', 'Mahindra XUV700': 'SUV',
+    'Hyundai Sonata': 'Sedan', 'Mahindra BOLERO NEO': 'SUV',
+    'Maruti BREZZA': 'SUV', 'Datsun Go Plus': 'Hatchback',
+    'Hyundai ALCAZAR': 'SUV', 'BMW 3 Series': 'Lux_Sedan',
+    'Jeep Compass': 'SUV', 'Toyota Innova Crysta': 'SUV',
+    'KIA CARENS': 'SUV', 'Skoda KUSHAQ': 'SUV',
+    'Volkswagen Jetta': 'Sedan', 'Renault Pulse': 'Hatchback', 
+    'Ford Figo Aspire': 'Sedan', 'Maruti Wagon R': 'Hatchback', 
+    'Mahindra TUV 300 PLUS': 'SUV', 'MG HECTOR PLUS': 'SUV', 
+    'Tata Bolt': 'Hatchback', 'MG HECTOR': 'SUV', 
+    'Volkswagen T-ROC': 'SUV', 'Maruti OMNI E': 'Hatchback', 
+    'Jeep GRAND CHEROKEE': 'Lux_SUV', 'Toyota Fortuner': 'Lux_SUV', 
+    'Mahindra MARAZZO': 'SUV', 'Nissan Sunny': 'Sedan'
+}
+
+
 # --- Create the Encoding Maps ---
 def create_mapping(options):
     """Creates a dictionary map from string value to its list index (0-based label)."""
@@ -64,7 +132,20 @@ TYPE_MAP = create_mapping(TYPE_OPTIONS)
 LOCATION_MAP = create_mapping(LOCATION_OPTIONS)
 
 
-# --- REUSABLE PREDICTION FUNCTIONS ---
+# --- CALLBACK FUNCTION to automatically update Car Body Type ---
+def update_car_type_on_model_change():
+    """Reads the selected car name and updates the car_type state variable."""
+    # The new car name is stored in st.session_state.car_name after the selectbox is used
+    car_name = st.session_state.car_name
+    
+    # Look up the corresponding body type, defaulting to the first option if not found
+    default_type = CAR_TYPE_MAPPING.get(car_name, TYPE_OPTIONS[0])
+    
+    # Update the session state variable for car_type, which is used to set the index in tab 2
+    st.session_state.car_type = default_type
+
+
+# --- REUSABLE PREDICTION FUNCTIONS (Unchanged) ---
 
 def get_input_dataframe(car_name, year, distance, owner, fuel, location, drive, car_type):
     """Encodes inputs and creates the prediction DataFrame."""
@@ -182,7 +263,7 @@ div[data-testid="stMetricLabel"] {
 st.markdown('<p class="main-header">🚗 Used Car Price Predictor</p>', unsafe_allow_html=True)
 st.markdown("---") 
 
-# --- 3. INPUT GATHERING (ADOPTED FROM APP1.PY) ---
+# --- 3. INPUT GATHERING ---
 
 # Initialize session state for all inputs and prediction result
 input_defaults = {
@@ -198,7 +279,15 @@ tab1, tab2, tab3 = st.tabs(["*1. Identity", "2. Specs", "3. Predict*"])
 
 with tab1:
     st.subheader("🚘 Car Identity Details")
-    st.session_state.car_name = st.selectbox('Select Car Model', options=CAR_NAMES, key='input_car_name', index=CAR_NAMES.index(st.session_state.car_name), help="Choose the exact model name.")
+    # --- CHANGE: Added on_change callback to update car_type ---
+    st.session_state.car_name = st.selectbox(
+        'Select Car Model', 
+        options=CAR_NAMES, 
+        key='input_car_name', 
+        index=CAR_NAMES.index(st.session_state.car_name), 
+        help="Choose the exact model name.",
+        on_change=update_car_type_on_model_change
+    )
     col_t1_1, col_t1_2 = st.columns(2)
     with col_t1_1:
         st.session_state.year = st.slider('Year of Registration', min_value=2010, max_value=2025, value=st.session_state.year, step=1, key='input_year', help="The year the car was first registered.")
@@ -223,7 +312,15 @@ with tab2:
             st.info("ℹ️ Very low mileage for the car's age. (Positive factor)")
 
     with col_t2_2:
-        st.session_state.car_type = st.selectbox('Car Body Type', options=TYPE_OPTIONS, key='input_type', index=TYPE_OPTIONS.index(st.session_state.car_type), help="e.g., Hatchback, Sedan, SUV.")
+        # The index for 'Car Body Type' is automatically updated here because st.session_state.car_type 
+        # was modified by the update_car_type_on_model_change callback in tab 1.
+        st.session_state.car_type = st.selectbox(
+            'Car Body Type', 
+            options=TYPE_OPTIONS, 
+            key='input_type', 
+            index=TYPE_OPTIONS.index(st.session_state.car_type), 
+            help="e.g., Hatchback, Sedan, SUV."
+        )
         st.session_state.drive = st.selectbox('Transmission Type', options=DRIVE_OPTIONS, key='input_drive', index=DRIVE_OPTIONS.index(st.session_state.drive), help="Manual or Automatic.")
     
     st.markdown("---")
@@ -231,7 +328,7 @@ with tab2:
     st.session_state.location = st.selectbox('Location (City where the car is being sold)', options=LOCATION_OPTIONS, key='input_location', index=LOCATION_OPTIONS.index(st.session_state.location), help="The city is used as a pricing factor.")
 
 
-# --- 4. PREDICTION LOGIC (ADOPTED FROM APP1.PY) ---
+# --- 4. PREDICTION LOGIC ---
 
 with tab3:
     st.subheader("✅ Confirm Inputs and Get Prediction")
@@ -260,7 +357,7 @@ with tab3:
 
             prediction_lakhs = prediction / 100000
             
-            # Display Prediction (using st.metric and st.info, no graphs)
+            # Display Prediction
             st.metric(
                 label="Predicted Price (INR)", 
                 value=f"₹ {prediction_lakhs:,.2f} Lakhs" 
